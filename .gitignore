@@ -1,0 +1,6 @@
+__pycache__/
+.idea
+.pytest_cache
+.mypy_cache
+.django_cache
+/.venv
