@@ -40,12 +40,18 @@ class Summary:
 
     @property
     def duration(self) -> timedelta:
-        return self.trips[0].evidence.taken_at - self.trips[-1].evidence.taken_at
+        try:
+            return self.trips[0].evidence.taken_at - self.trips[-1].evidence.taken_at
+        except IndexError:
+            return timedelta(0)
 
 
 def feed_to_trips(feed: Iterator[FeedItem]) -> Iterator[Trip]:
     location_feed = filter_feed_for_locations(feed)
-    to = next(location_feed)
+    try:
+        to = next(location_feed)
+    except StopIteration:
+        return []
     for _from in location_feed:
         assert isinstance(to.location, FullLocation)
         assert isinstance(_from.location, FullLocation)
