@@ -47,7 +47,7 @@
       {% endfor %}
     </ul>
     <h2>summary for last {{ summary.duration }}</h2>
-    In conclusion it was over {{ summary.total_distance|floatformat:"0" }}KM and emitted {{ summary.carbon|floatformat:"0" }} KG of CO2. you shit
+    In conclusion it was over {{ summary.total_distance|floatformat:"0" }}KM and emitted {{ summary.carbon|floatformat:"0" }} KG of CO2. {% if summary.carbon == 0 %}sad!{% else %}you shit{% endif %}
 </div>
 </body>
 </html>

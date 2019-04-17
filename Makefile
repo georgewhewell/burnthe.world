@@ -1,10 +1,10 @@
 init:
 	@python -m venv .venv
 
-install-deps: ${VENV}/bin/activate
+install-deps:
 	@python -m pip install -r requirements.txt
 
-install-deps-test: ${VENV}/bin/activate
+install-deps-test:
 	@python -m pip install -r requirements.txt -r requirements-test.txt
 
 test:
