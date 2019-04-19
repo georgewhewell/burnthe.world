@@ -16,10 +16,13 @@ check:
 format:
 	@python -m black .
 
+collectstatic:
+	@python -m django collectstatic --noinput
+
 run:
 	@python -m django runserver
 
-deploy: format check test
+deploy: collectstatic format check test
 	@gcloud app deploy
 
 .PHONY: install-deps install-deps-test test check format run

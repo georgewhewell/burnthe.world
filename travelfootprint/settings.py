@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-from os.path import abspath, dirname
+from os.path import abspath, dirname, join
 from random import randint
 from typing import Dict
 
@@ -58,6 +58,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+STATIC_ROOT = join(BASE_DIR, "static")
 STATIC_URL = "/static/"
 
 CACHES = {
