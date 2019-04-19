@@ -2,5 +2,4 @@ Django==2.1.7
 pytz==2018.9
 git+https://git@github.com/ping/instagram_private_api.git@1.6.0
 django-cache-memoize==0.1.6
-google-cloud-logging
 geopy==1.19.0
