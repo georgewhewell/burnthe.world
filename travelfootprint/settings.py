@@ -17,10 +17,11 @@ BASE_DIR = dirname(dirname(abspath(__file__)))
 DEBUG = True
 SECRET_KEY = "".join(chr(randint(0, 255)) for _ in range(64))
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "travelfootprint",
+    "bulma",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.staticfiles",

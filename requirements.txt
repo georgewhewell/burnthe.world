@@ -3,3 +3,4 @@ pytz==2018.9
 git+https://git@github.com/ping/instagram_private_api.git@1.6.0
 django-cache-memoize==0.1.6
 geopy==1.19.0
+django-bulma==0.5.6

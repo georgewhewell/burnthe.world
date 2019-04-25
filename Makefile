@@ -20,7 +20,7 @@ collectstatic:
 	@python -m django collectstatic --noinput
 
 run:
-	@python -m django runserver
+	@python -m django runserver 0.0.0.0:8000
 
 deploy: collectstatic format check test
 	@gcloud app deploy
