@@ -1,3 +1,6 @@
+import string
+import hashlib
+import random
 import functools
 from concurrent.futures import Future, as_completed
 from concurrent.futures.thread import ThreadPoolExecutor
@@ -18,7 +21,15 @@ from travelfootprint.insta.types import (
     NoLocation,
 )
 
-web_api = Client(auto_patch=True, drop_incompat_keys=False)
+class MyClient(Client):
+
+    @staticmethod
+    def _extract_rhx_gis(html):
+        options = string.ascii_lowercase + string.digits
+        text = ''.join([random.choice(options) for _ in range(8)])
+        return hashlib.md5(text.encode()).hexdigest()
+
+web_api = MyClient(auto_patch=True, drop_incompat_keys=False)
 web_api.user_info = cache_memoize(3600)(web_api.user_info)
 web_api.user_feed = cache_memoize(3600)(web_api.user_feed)
 web_api.location_feed = cache_memoize(3600)(web_api.location_feed)
