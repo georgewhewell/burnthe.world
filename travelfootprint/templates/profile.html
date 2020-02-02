@@ -4,15 +4,20 @@
   <img src="{{ profile.profile_picture }}">
   <h1 class="title">lets see what {{ profile.username }} has been up to...</h1>
   <div class="list has-text-dark">
-  {% for trip in trips %}
-  <a class="list-item">
-    <img src="{{ trip.evidence.display_url }}">
-    Oh look, on {{ trip.evidence.taken_at }} you went to {{ trip.end.name }} 
-    from {{ trip.start.name }}. 
-    It was over {{ trip.distance|floatformat:"0" }}KM away, great job!
-  </a>
-  {% endfor %}
-  <h2>summary for last {{ summary.duration }}</h2>
-  In conclusion it was over {{ summary.total_distance|floatformat:"0" }}KM and emitted {{ summary.carbon|floatformat:"0" }} KG of CO2. {% if summary.carbon == 0 %}sad!{% else %}you shit{% endif %}
-  </div>
+    {% if profile.is_private %}
+      <h2>This profile is private. Something to hide, {{ profile.username }}?</h2>
+    {% else %}
+      {% for trip in trips %}
+        <a class="list-item">
+          <img src="{{ trip.evidence.display_url }}">
+          Oh look, on {{ trip.evidence.taken_at }} you went to {{ trip.end.name }}
+          from {{ trip.start.name }}.
+          It was over {{ trip.distance|floatformat:"0" }}KM away, great job!
+        </a>
+      {% endfor %}
+      <h2>summary for last {{ summary.duration }}</h2>
+      In conclusion it was over {{ summary.total_distance|floatformat:"0" }}KM and emitted {{ summary.carbon|floatformat:"0" }} KG of CO2. {% if summary.carbon == 0 %}sad!{% else %}you shit{% endif %}
+      </div>
+    {% endif %}
+
 {% endblock content %}
